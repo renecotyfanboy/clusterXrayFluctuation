@@ -1,0 +1,17 @@
+image: python:3.9-buster
+
+before_script:
+  - pip install poetry
+  - poetry install --only docs
+  - pip install git+https://$GH_TOKEN@github.com/squidfunk/mkdocs-material-insiders.git
+  - pip install git+https://$GH_TOKEN@github.com/pawamoy-insiders/mkdocstrings-python.git
+
+pages:
+  stage: deploy
+  script:
+  - poetry run mkdocs build -d public --verbose
+  artifacts:
+    paths:
+    - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH

@@ -1,0 +1,116 @@
+site_name: XSB-fluctuations
+
+nav:
+  - Home: 'index.md'
+  - Examples :
+      - Load data : 'examples/open_data.ipynb'
+      - Compute column density : 'examples/compute_nh.ipynb'
+      - Voronoi binning : 'examples/voronoi.ipynb'
+      - Fit a mean model : 'examples/mean_model.ipynb'
+      - Compute a power spectrum: 'examples/power_spectrum.ipynb'
+      - SBI demo : 'examples/sbi_with_spectra.ipynb'
+  - API reference :
+      - data : 'references/data.md'
+      - physics : 'references/physics.md'
+      - fitting : 'references/fitting.md'
+      - simulation : 'references/simulation.md'
+
+theme:
+  name: material
+  features:
+    - content.tabs.link
+    - content.code.copy
+    - navigation.indexes
+  favicon: logo/logo.png
+  logo: logo/logo.png
+
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: pink
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: pink
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+plugins:
+  - search
+  - autorefs
+  - mkdocs-jupyter:
+      include_requirejs: True
+      include_source: True
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          import:
+            - https://docs.python.org/3/objects.inv
+            - https://docs.astropy.org/en/stable/objects.inv
+            - https://numpy.org/doc/stable/objects.inv
+            - https://samreay.github.io/ChainConsumer/objects.inv
+            - https://num.pyro.ai/en/stable/objects.inv
+            - https://dm-haiku.readthedocs.io/en/latest/objects.inv
+            - https://python.arviz.org/en/stable/objects.inv
+            - https://astropy-regions.readthedocs.io/en/stable/objects.inv
+          options:
+            members_order: alphabetical
+            docstring_section_style: table
+            docstring_style: google
+            show_root_heading: true
+            heading_level: 2
+            show_symbol_type_toc: true
+
+markdown_extensions:
+
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+repo_url: https://gitlab.in2p3.fr/simon.dupourque/fluctuation_xcop
+repo_name: xsb_fluctuation
+
+extra_css:
+  - css/material.css
+  - css/mkdocstrings.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+watch: [mkdocs.yml, src/xsb_fluc]
