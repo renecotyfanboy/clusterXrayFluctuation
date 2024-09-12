@@ -1,7 +1,5 @@
 # X-ray surface brightness fluctuations code 
 
-**[Link to internal doc](https://simon.dupourque.pages.in2p3.fr/fluctuation_xcop)**
-
 This is the source code used to infer density fluctuations statistics from the
 X-ray surface brightness fluctuations maps of galaxy clusters. It mostly enable the 
 forward modelling of surface brightness maps using the GPU. It relies on both JAX and 
