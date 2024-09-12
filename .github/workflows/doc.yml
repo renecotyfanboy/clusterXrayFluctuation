@@ -31,6 +31,7 @@ jobs:
       - run: poetry install --only docs
       - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
       - run: pip install git+https://${GH_TOKEN}@github.com/pawamoy-insiders/mkdocstrings-python.git
+      - run: pip install mkdocs-jupyter
       - run: mkdocs gh-deploy --force
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
